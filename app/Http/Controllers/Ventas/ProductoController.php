@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Ventas;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\ProductoCreateRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Ventas\producto;
 use Redirect;
+use Session;
 
 use App\Models\Ventas\proveedor;
 use App\Models\Ventas\categoria;
@@ -37,7 +39,7 @@ class ProductoController extends Controller
     {
         $proveedores=proveedor::lists('Proveedor','id');
         $categorias=categoria::lists('Nombre','id');
-      return view('producto.create',compact('proveedores','categorias'));   
+        return view('producto.create',compact('proveedores','categorias'));   
     }
 
     /**
@@ -46,10 +48,13 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductoCreateRequest $request)
     {
         producto::create($request->all());
-        return redirect('producto');
+
+
+        Session::flash('message','Producto agregado correctamente');
+        return Redirect::to('producto');
     }
 
     /**

@@ -12,8 +12,8 @@
   <div class="panel panel-warning">
     <div class="panel-heading">Nuevo Prroducto</div>
   <div class="panel-body">
-  <div class="col-md-12 col-md-offset-0 form-horizontal"> 
-
+  <div class="col-md-12 col-md-offset-0 form-horizontal">
+  @include('mensajes.alertas')
     {!! Form::open(['route'=>'producto.store','method'=>'POST','files'=>true,'enctype'=>'multipart/form-data']) !!}
           @include('producto.form.reg')
         {{ Form::close() }}

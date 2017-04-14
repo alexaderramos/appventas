@@ -7,13 +7,18 @@
 	</div>
 
 	<div class="col-md-4">
-		<label for="proveedor">Provedor</label>
+		<label for="proveedor">Categoria</label>
 		{!! Form::select('idCategoria', $categorias,''	,['class'=>'form-control']) !!}
 	</div>
 
 	<div class="col-md-4"> 
 		<label for="cp">Codigo del producto</label>
 		<input type="input" name="CodProducto" placeholder="Ingrese Codigo del producto" class="form-control">
+	</div>
+
+	<div class="col-md-12">
+		<label for="descripcion">Descripcion</label>
+		<input type="text" name="Descripcion" class="form-control" placeholder="Describa el producto">
 	</div>
 
 	<div class="col-md-4">
@@ -30,11 +35,6 @@
 		<input type="number" name="Cantidad"  placeholder="Cantidad en unidades" min="1" class="form-control">
 
 	</div>
-
-	<div class="col-md-12">
-		<label for="descripcion">Descripcion</label>
-		<textarea name="Descripcion" class="form-control"></textarea>
-	</div> 
 
 
 

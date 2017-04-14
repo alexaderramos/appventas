@@ -29,6 +29,7 @@
               <td>{{$proveedors->Proveedor}}</td>
               <td>{{$proveedors->Telefono}}</td>
               <td>{{$proveedors->Direccion}}</td>
+              
            </tr>
         </tbody>
       </table>
