@@ -1,0 +1,1 @@
+primera version de la app ventas en laravel 5.2
