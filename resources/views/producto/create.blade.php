@@ -1,4 +1,4 @@
- @extends('layouts.app')
+@extends('layouts.master')
 @section('title','Nuevo Producto')
 @section('content')
 <ol class="breadcrumb">
@@ -12,11 +12,10 @@
   <div class="panel panel-warning">
     <div class="panel-heading">Nuevo Prroducto</div>
   <div class="panel-body">
-  <div class="col-md-12 col-md-offset-0 form-horizontal">
-  @include('mensajes.alertas')
+  <div class="col-md-12 col-md-offset-0 form-horizontal"> 
     {!! Form::open(['route'=>'producto.store','method'=>'POST','files'=>true,'enctype'=>'multipart/form-data']) !!}
           @include('producto.form.reg')
-        {{ Form::close() }}
+    {{ Form::close() }}
     </div>
   </div>
   </div>

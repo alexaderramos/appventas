@@ -1,4 +1,4 @@
- @extends('layouts.app')
+ @extends('layouts.master')
 @section('title','Nuevo Proveedor')
 @section('content')
 <ol class="breadcrumb">
@@ -7,6 +7,7 @@
     <li class="active">Nuevo Proveedor</li>
  </ol>
  <!-- incluir etiqueta para mostrar los errores -->
+@include('mensajes.mensajes')
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
   <div class="panel panel-warning">
@@ -17,7 +18,6 @@
       @include('proveedor.form.reg')
     {!!Form::close()!!}
     </div>
-
   </div>
   </div>
 </div>

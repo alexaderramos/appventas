@@ -1,4 +1,4 @@
- @extends('layouts.app')
+ @extends('layouts.master')
 @section('title','Nueva Categoria')
 @section('content')
 <ol class="breadcrumb">
@@ -10,8 +10,6 @@
  <div class="">
   @include('mensajes.mensajes')
  </div>
- 
-
   <div class="col-md-6 col-md-offset-3">
   <div class="panel panel-warning">
     <div class="panel-heading">Nueva Categoria</div>

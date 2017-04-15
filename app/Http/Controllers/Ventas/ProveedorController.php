@@ -1,13 +1,12 @@
 <?php
-
 namespace App\Http\Controllers\Ventas;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Ventas\proveedor;
 use redirect;
-
+use Session;
+use Illuminate\Support\Facades\Validator;
 class ProveedorController extends Controller
 {
     /**
@@ -39,8 +38,24 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        proveedor::create($request->all());
-        return redirect('/proveedor');
+         $validator = Validator::make($request->all(),[
+        'Ruc' => 'required|unique:proveedor,Ruc',
+        'Proveedor' => 'required',
+        'Telefono' => 'required|numeric',
+        'Direccion' => 'required',
+            
+        ]);
+
+        if ($validator->fails()){
+             return redirect()->back()
+             ->withErrors($validator->errors());
+        }
+        else{
+         proveedor::create($request->all());
+         Session::flash('save','se ha creado correctamente');
+         return redirect('/proveedor');
+        }   
+       
     }
 
     /**

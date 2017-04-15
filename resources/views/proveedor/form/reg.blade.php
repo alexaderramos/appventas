@@ -1,3 +1,4 @@
+
 <div class="form-group">
         {!!form::label('Ruc')!!}
   			{!!form::text('Ruc',null, ['id'=>'Ruc','class'=>'form-control', 'placeholder'=>'Ingrese Ruc'])!!}
@@ -17,4 +18,4 @@
       <div class="form-group">
         <button type="submit" class="btn btn-warning">Guardar</button>
         <a   href="{{url('proveedor')}}"type="button" class="btn btn-info">Cancelar</a>
-      </div>
+    </div>

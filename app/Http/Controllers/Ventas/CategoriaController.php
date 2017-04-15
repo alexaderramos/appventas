@@ -43,10 +43,8 @@ class CategoriaController extends Controller
     {   
         $validator = Validator::make($request->all(),[
         'Nombre' => 'required|unique:categoria,Nombre',
-        'Descripcion' => 'required',
-            
+        'Descripcion' => 'required', 
         ]);
-
         if ($validator->fails()){
              return redirect()->back()
              ->withErrors($validator->errors());
@@ -55,8 +53,7 @@ class CategoriaController extends Controller
         categoria::create($request->all());
         Session::flash('save','se ha creado correctamente');
         return redirect('/categoria');
-        }   
-       
+        }       
     }
 
     /**
@@ -67,7 +64,9 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        
+        $categorias=categoria::find($id);
+        return view('categoria.show',compact('categorias'));
+     
     }
 
     /**
@@ -78,7 +77,8 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+         $categorias=categoria::FindOrFail($id);
+         return view('categoria.edit',compact('categorias'));
     }
 
     /**
@@ -90,7 +90,11 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categorias = categoria::find($id);
+        $categorias->fill($request->all());
+        $categorias->save();
+        return redirect('categoria');
+    
     }
 
     /**
@@ -101,6 +105,10 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categorias=categoria::find($id);
+        $categorias->delete();
+        return redirect('/categoria');
+       
+       
     }
 }

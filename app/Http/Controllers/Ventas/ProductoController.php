@@ -5,12 +5,10 @@ namespace App\Http\Controllers\Ventas;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Requests\ProductoCreateRequest;
 use App\Http\Controllers\Controller;
-use App\Models\Ventas\producto;
-use Redirect;
-use Session;
 
+use Redirect;
+use App\Models\Ventas\producto;
 use App\Models\Ventas\proveedor;
 use App\Models\Ventas\categoria;
 
@@ -25,9 +23,10 @@ class ProductoController extends Controller
     {
         
          $productos=producto::Productos();
-         //return $productos;
-
-        return view('producto.read',compact('productos'));
+         return view('producto.read',compact('productos'));
+        //  $productos=producto::select('producto.id','producto.Descripcion as producto','CodProducto','Descripcion','proveedor.Proveedor as proveedor','PrecioCosto','PrecioVenta','Cantidad')
+        //                    ->join('proveedor','proveedor.id','=','producto.idProveedor')->paginate(3); //me pagina de 2 en 2
+        // return view('producto.read')->with('producto',$productos);
     }
 
     /**
@@ -48,13 +47,10 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductoCreateRequest $request)
+    public function store(Request $request)
     {
         producto::create($request->all());
-
-
-        Session::flash('message','Producto agregado correctamente');
-        return Redirect::to('producto');
+        return redirect('producto');
     }
 
     /**
@@ -65,7 +61,8 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+         $productos=producto::find($id);
+         return view('producto.show',compact('productos'));
     }
 
     /**
@@ -76,7 +73,8 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+         $productos=producto::FindOrFail($id);
+         return view('producto.edit',compact('productos'));
     }
 
     /**
@@ -88,7 +86,10 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $productos = producto::find($id);
+        $productos->fill($request->all());
+        $productos->save();
+        return redirect('producto');
     }
 
     /**

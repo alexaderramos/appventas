@@ -42,7 +42,5 @@ class producto extends Model
         ->join('proveedor','proveedor.id','=','producto.idProveedor')
         ->select('producto.*','categoria.Nombre','proveedor.Proveedor')
         ->get();
-        //->paginate(5);
-
     }
 }

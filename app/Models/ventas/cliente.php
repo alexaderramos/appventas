@@ -3,7 +3,6 @@
 namespace App\Models\ventas;
 
 use Illuminate\Database\Eloquent\Model;
-use Validator;
 class cliente extends Model
 {
     //

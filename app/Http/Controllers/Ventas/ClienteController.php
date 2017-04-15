@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Ventas;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Models\Ventas\cliente;
 use Redirect;
-use Validator;
+use Session;
+use Illuminate\Support\Facades\Validator;
 class ClienteController extends Controller
 {
     /**
@@ -40,10 +40,10 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
          $validator = Validator::make($request->all(),[
-        'Nombre' => 'required|unique:categoria,Nombre',
+        'Nombre' => 'required|unique:cliente,Nombre',
         'Apellidos' => 'required',
-         'Direccion' => 'required',
-        'Telefono' => 'required|nim:9 max:15',
+        'Direccion' => 'required',
+        'Telefono' => 'required|min:9 max:15',
             
         ]);
 

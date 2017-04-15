@@ -1,4 +1,4 @@
- @extends('layouts.app')
+ @extends('layouts.master')
 @section('title','Eliminar Proveedor')
 @section('content')
 <ol class="breadcrumb">

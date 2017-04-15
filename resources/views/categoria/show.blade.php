@@ -1,4 +1,4 @@
- @extends('layouts.app')
+ @extends('layouts.master')
 @section('title','Eliminar Categoria')
 @section('content')
 <ol class="breadcrumb">
@@ -13,22 +13,19 @@
      <div class="panel-body">
       <legend class="bg-danger">Desea eliminar esta Categiria?</legend>
       
-  {!!Form::open(['route'=>['cliente.destroy',$clientes->id],'method'=>'DELETE'])!!}
+  {!!Form::open(['route'=>['categoria.destroy',$categorias->id],'method'=>'DELETE'])!!}
       <table class="table table-bordered">
         <thead style="font-family:Verdana" class="btn-warning">
           <th>Id</th>
           <th>Nombre</th>
-          <th>Apellidos</th>
-          <th>Telefono</th>
-          <th>Direccion</th>
+          <th>Descripcion</th>
         </thead>
         <tbody>
            <tr>
-              <td>{{$clientes->id}}</td>
-              <td>{{$clientes->Nombre}}</td>
-              <td>{{$clientes->Apellidos}}</td>
-              <td>{{$clientes->Telefono}}</td>
-              <td>{{$clientes->Direccion}}</td>
+              <td>{{$categorias->id}}</td>
+              <td>{{$categorias->Nombre}}</td>
+              <td>{{$categorias->Descripcion}}</td>
+             
            </tr>
         </tbody>
       </table>

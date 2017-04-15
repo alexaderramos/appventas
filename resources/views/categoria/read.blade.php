@@ -1,4 +1,4 @@
- @extends('layouts.app')
+ @extends('layouts.master')
 @section('content')
 	<h3 class="pull-left">Lista de Categorias</h3>
 	<p class="text-right"><a href="{{URL::to('categoria/create')}}" class="btn btn-info fa fa-plus">Nuevo</a></p>
